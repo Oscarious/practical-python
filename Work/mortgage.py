@@ -18,7 +18,12 @@ while principal > 0:
         payment = ori_payment + extra_payment
     else:
         payment = ori_payment
-    principal = principal * (1+rate/12) - payment
+
+    if payment-principal > 0.0001:
+        payment = principal
+        principal = 0
+    else:
+        principal = principal * (1+rate/12) - payment
     total_paid = total_paid + payment
     print(month, total_paid, principal)
     month += 1
