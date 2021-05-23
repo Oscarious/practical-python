@@ -28,4 +28,4 @@ while principal > 0:
     print(month, total_paid, principal)
     month += 1
 
-print('Total paid:', total_paid, '\n month', month)
+print(f'Total paid: {total_paid}, month: {month}')
