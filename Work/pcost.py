@@ -10,6 +10,7 @@ def portfolio_cost(filename):
         try:
             total_cost += int(row[1]) * float(row[2])
         except ValueError as e:
+            print("WARNING: field not match or missing")
             pass
     return total_cost
 total_cost = portfolio_cost('Data/portfolio.csv')
