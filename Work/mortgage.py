@@ -7,19 +7,20 @@ rate = 0.05
 ori_payment = 2684.11
 payment = ori_payment
 total_paid = 0.0
-mounth = 1
+month = 1
 extra_payment_start_month = 5 * 12 + 1
 extra_payment_end_month = extra_payment_start_month + 4 * 12
 extra_payment = 1000
 
 
 while principal > 0:
-    if mounth >= extra_payment_start_month and mounth <= extra_payment_end_month:
+    if month >= extra_payment_start_month and month <= extra_payment_end_month:
         payment = ori_payment + extra_payment
     else:
         payment = ori_payment
     principal = principal * (1+rate/12) - payment
     total_paid = total_paid + payment
-    mounth += 1
+    print(month, total_paid, principal)
+    month += 1
 
-print('Total paid:', total_paid, ' over:', mounth, 'months')
+print('Total paid:', total_paid, '\n month', month)
