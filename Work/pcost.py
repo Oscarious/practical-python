@@ -1,6 +1,7 @@
 # pcost.py
 #
 # Exercise 1.27
+import sys
 
 def portfolio_cost(filename):
     f = open(filename, 'rt')
@@ -13,5 +14,5 @@ def portfolio_cost(filename):
             print("WARNING: field not match or missing")
             pass
     return total_cost
-total_cost = portfolio_cost('Data/portfolio.csv')
+total_cost = portfolio_cost(sys.argv[1])
 print(f'total cost: {total_cost}')
