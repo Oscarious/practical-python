@@ -12,12 +12,6 @@ def read_portfolio(filename):
             for row in rows:
                 nshares = int(row[1])
                 price = float(row[2])
-                holding = (row[0], int(row[1]), float(row[2]))
+                holding = {'name':row[0], 'shares':int(row[1]), 'price':float(row[2])}
                 portfolio.append(holding)
     return portfolio
-
-# if __name__ == '__main__':
-#     if len(sys.argv) < 2:
-#         print("error")
-#         exit()
-#     read_partfolio(sys.argv[1])
