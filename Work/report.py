@@ -24,3 +24,11 @@ def read_prices(filename):
             if (len(row) > 1):
                 res[row[0]] = float(row[1])
     return res
+
+def cal_profit():
+    portfolios = read_portfolio('Data/portfolio.csv')
+    prices = read_prices('Data/prices.csv')
+    profit = 0
+    for portfolio in portfolios:
+        profit = portfolio['shares'] * (prices[portfolio['name']]-portfolio['price'])
+    return profit
