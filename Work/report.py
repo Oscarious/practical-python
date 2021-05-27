@@ -32,3 +32,10 @@ def cal_profit():
     for portfolio in portfolios:
         profit = portfolio['shares'] * (prices[portfolio['name']]-portfolio['price'])
     return profit
+
+def make_report(portfolio, prices):
+    report = []
+    for item in portfolio:
+        price = prices[item['name']]
+        report.append((item['name'], item['shares'], price, price-item['price']))
+    return report
