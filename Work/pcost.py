@@ -2,17 +2,15 @@
 #
 # Exercise 1.27
 import sys
+import csv
 
 def portfolio_cost(filename):
     f = open(filename, 'rt')
+    rows = csv.reader(f)
     total_cost = 0
-    for line in f:
-        row = line.split(',')
+    for rowno, row in enumerate(rows, start=1):
         try:
             total_cost += int(row[1]) * float(row[2])
         except ValueError as e:
-            print("WARNING: field not match or missing")
-            pass
+            print('Row {}: Bad row: {}'.format(rowno, row))
     return total_cost
-total_cost = portfolio_cost(sys.argv[1])
-print(f'total cost: {total_cost}')
