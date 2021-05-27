@@ -38,4 +38,5 @@ def make_report(portfolio, prices):
     for item in portfolio:
         price = prices[item['name']]
         report.append((item['name'], item['shares'], price, price-item['price']))
-    return report
+    for r in report:
+        print('%10s %10d %10.2f %10.2f' % r)
