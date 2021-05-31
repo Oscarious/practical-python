@@ -1,7 +1,7 @@
 # fileparse.py
 import csv
 
-def parse_csv(filename, select=None, types=None, has_headers=True, delimiter=','):
+def parse_csv(filename, select=None, types=None, has_headers=True, delimiter=',', silence_errors=False):
     if select and has_headers == False:
         raise RuntimeError("select argument requires column headers")
     with open(filename) as f:
@@ -16,7 +16,7 @@ def parse_csv(filename, select=None, types=None, has_headers=True, delimiter=','
             headers = select
 
         records = []
-        for row in rows:
+        for rowno, row in enumerate(rows, 1):
             try:
                 if not row:     # Skip rows with no data
                     continue
@@ -36,5 +36,8 @@ def parse_csv(filename, select=None, types=None, has_headers=True, delimiter=','
                     record = tuple(row)
                 records.append(record)
             except ValueError as e:
-                print(e)
+                if not silence_errors:
+                    print("Row {}: Couldn't convert {}".format(rowno, row))
+                    print("Row {}: Reason {}".format(rowno, e))
+                continue
         return records
