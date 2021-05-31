@@ -1,6 +1,7 @@
 # pcost.py
 
 import report
+import sys
 
 def portfolio_cost(filename):
     '''
@@ -16,5 +17,4 @@ def main(args):
     print('Total cost:', portfolio_cost(filename))
 
 if __name__ == '__main__':
-    import sys
     main(sys.argv)

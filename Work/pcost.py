@@ -9,9 +9,13 @@ def portfolio_cost(filename):
     portfolio = report.read_portfolio(filename)
     return sum([s['shares']*s['price'] for s in portfolio])
 
-if len(sys.argv) == 2:
-    filename = sys.argv[1]
-    cost = portfolio_cost(sys.argv[1])
-    print('Total cost:', cost)
-else:
-    filename = input('Enter a filename:')
+def main(args):
+    if len(args) != 2:
+        print('Usage: %s portfoliofile' % args[0])
+        exit(1)
+    filename = args[1]
+    print('Total cost:', portfolio_cost(filename))
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)

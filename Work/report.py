@@ -53,3 +53,12 @@ def portfolio_report(portfolio_filename, prices_filename):
     prices = read_prices(prices_filename)
     report = make_report(portfolio, prices)
     print_report(report)
+
+def main(args):
+    if len(args) != 3:
+        print('Usage: %s portfile pricefile' % args[0])
+        exit(1)
+    portfolio_report(args[1], args[2])
+
+if __name__ == '__main__':
+    main(sys.argv)
