@@ -35,12 +35,15 @@ def cal_profit():
 
 def make_report(portfolio, prices):
     report = []
+    for item in portfolio:
+        price = prices[item['name']]
+        report.append((item['name'], item['shares'], price, price-item['price']))
+    return report
+
+def print_report(report):
     headers = ('Name', 'Shares', 'Price', 'Change')
     split_line = ('----------', '----------', '----------', '----------')
     print('%10s %10s %10s %10s' % headers)
     print('%10s %10s %10s %10s' % split_line)
-    for item in portfolio:
-        price = prices[item['name']]
-        report.append((item['name'], item['shares'], price, price-item['price']))
     for r in report:
         print('%10s %10d %10.2f %10.2f' % r)
